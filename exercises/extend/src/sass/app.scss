@@ -1,7 +1,7 @@
-$primary: #cc4466 !important;
-$secondary: #edbcc8 !important;
-$primaryFont: #ffffff !important;
-$secondaryFont: #000000 !important;
+$primary: #cc4466;
+$secondary: #edbcc8;
+$white: #ffffff;
+$black: #000000;
 
 %btn {
   padding: 2px 10px;
@@ -12,16 +12,21 @@ $secondaryFont: #000000 !important;
   }
 }
 
-@mixin btn($bg, $color) {
+@mixin btn($bg) {
   @extend %btn;
   background: $bg;
-  color: $color;
+
+  @if lightness($bg) < 70% {
+    color: $white;
+  } @else {
+    color: $black;
+  }
 }
 
 .btn-primary {
-  @include btn($primary, $primaryFont);
+  @include btn($primary);
 }
 
 .btn-secondary {
-  @include btn($secondary, $secondaryFont);
+  @include btn($secondary);
 }
