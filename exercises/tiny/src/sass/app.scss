@@ -1,0 +1,20 @@
+$dimension_map: (
+  p: padding,
+  m: margin,
+);
+$directions_map: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+@each $dimension_key, $dimension_value in $dimension_map {
+  @each $direct_key, $direct_value in $directions_map {
+    @for $j from 1 through 5 {
+      $size: $j * 5;
+      .#{$dimension_key}-#{$direct_key}-#{$size} {
+        #{$dimension_value}-#{$direct_value}: #{$size}px;
+      }
+    }
+  }
+}

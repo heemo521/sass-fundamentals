@@ -20,9 +20,16 @@
 }
 
 @mixin btn-base($bg, $darken_pct: 0) {
-  background-color: darken($bg, $darken_pct);
+  $background-color: darken($bg, $darken_pct);
+
+  background-color: $background-color;
   border-color: darken($bg, 20%);
-  &:hover {
+
+  @if lightness($background-color) < 70% {
+    color: white;
+  }
+
+  &:hover:not(:disabled) {
     background-color: lighten(saturate($bg, 20%), 10%);
   }
 }
