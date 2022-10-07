@@ -1,5 +1,27 @@
-body {
-    h1 {
-    color: #c69;
+$primary: #cc4466 !important;
+$secondary: #edbcc8 !important;
+$primaryFont: #ffffff !important;
+$secondaryFont: #000000 !important;
+
+%btn {
+  padding: 2px 10px;
+  border-radius: 2px;
+  border-style: solid;
+  &:disabled {
+    opacity: 0.5;
   }
+}
+
+@mixin btn($bg, $color) {
+  @extend %btn;
+  background: $bg;
+  color: $color;
+}
+
+.btn-primary {
+  @include btn($primary, $primaryFont);
+}
+
+.btn-secondary {
+  @include btn($secondary, $secondaryFont);
 }
